@@ -1,5 +1,7 @@
 package com.kumar.jpa.springdatajpa.repository;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,6 +27,11 @@ public class CourseMaterialTest {
         .build();
 
         courseMaterialRepository.save(courseMaterial);
+    }
+
+    @Test
+    void fetchCourseMaterial() {
+       List<CourseMaterial> courseMaterial =  courseMaterialRepository.findAll();
 
     }
 }
