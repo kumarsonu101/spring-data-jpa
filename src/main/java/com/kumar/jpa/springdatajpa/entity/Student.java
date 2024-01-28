@@ -10,16 +10,11 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity(name = "student")
-@Table(name = "tbl_student",
-uniqueConstraints = @UniqueConstraint(name = "emailContstraint", columnNames = "email"))
+@Table(name = "tbl_student", uniqueConstraints = @UniqueConstraint(name = "emailContstraint", columnNames = "email"))
 public class Student {
-    
+
     @Id
-    @SequenceGenerator(
-        name = "student_sequence",
-        sequenceName = "student_sequence",
-        allocationSize = 1
-    )
+    @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
     private Long studentId;
     private String firstName;
@@ -32,9 +27,8 @@ public class Student {
 
     public Student() {
 
-    
     }
-    
+
     public Student(Long studentId, String firstName, String lastName, String email, String guardianName,
             String gurdianEmail, String guardianMobile) {
         this.studentId = studentId;
@@ -46,48 +40,65 @@ public class Student {
         this.guardianMobile = guardianMobile;
     }
 
-
     public Long getStudentId() {
         return studentId;
     }
+    
+
     public void setStudentId(Long studentId) {
         this.studentId = studentId;
     }
+
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getGuardianName() {
         return guardianName;
     }
+
     public void setGuardianName(String guardianName) {
         this.guardianName = guardianName;
     }
+
     public String getGurdianEmail() {
         return gurdianEmail;
     }
+
     public void setGurdianEmail(String gurdianEmail) {
         this.gurdianEmail = gurdianEmail;
     }
+
     public String getGuardianMobile() {
         return guardianMobile;
     }
+
     public void setGuardianMobile(String guardianMobile) {
         this.guardianMobile = guardianMobile;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {
@@ -97,12 +108,12 @@ public class Student {
 
         }
 
-        public Builder id(Long studentId) {
+        public Builder studentId(Long studentId) {
             student.studentId = studentId;
             return this;
         }
 
-        public Builder username(String firstName) {
+        public Builder firstName(String firstName) {
             student.firstName = firstName;
             return this;
         }
@@ -116,7 +127,6 @@ public class Student {
             student.email = email;
             return this;
         }
-
 
         public Builder guardianName(String guardianName) {
             student.guardianName = guardianName;
@@ -141,4 +151,4 @@ public class Student {
         }
     }
 
-    }
+}
