@@ -81,6 +81,14 @@ public class StudentRepositoryTest {
         assertListSize(studentListByName, 1);
       
     }
+
+    @Test
+    void should_return_student_object_given_email() {
+       Student student =  studentRepository.getStudentByEmailAdress("sonuKumar@gmail.com");
+       assertNotNull(student);
+       assertEquals(student.getStudentId(), 1);
+
+    }
     
 
     private static void assertListSize(List<?> list, int expectedSize) {
