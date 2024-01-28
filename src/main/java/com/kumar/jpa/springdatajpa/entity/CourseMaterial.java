@@ -1,5 +1,6 @@
 package com.kumar.jpa.springdatajpa.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,13 +13,15 @@ import jakarta.persistence.SequenceGenerator;
 public class CourseMaterial {
 
     @Id
-    @SequenceGenerator(name = "course_material", sequenceName = "course_material", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_material")
+    @SequenceGenerator(name = "course_material_sequence", sequenceName = "course_material_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_material_sequence")
     private Long courseMaterialId;
     private String url;
 
-    @OneToOne
-    @JoinColumn(name = "course_Id", referencedColumnName = "courseId")
+    @OneToOne(
+        cascade = CascadeType.ALL
+    )
+    @JoinColumn(name = "course_id", referencedColumnName = "courseId")
     private Course course;
 
     public CourseMaterial() {
@@ -54,6 +57,10 @@ public class CourseMaterial {
         this.course = course;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public static class Builder {
         private CourseMaterial courseMaterial = new CourseMaterial();
 
@@ -71,7 +78,6 @@ public class CourseMaterial {
             return this;
         }
 
-    
         public Builder Course(Course course) {
             courseMaterial.course = course;
             return this;
@@ -84,6 +90,4 @@ public class CourseMaterial {
         }
     }
 
-
-    
 }
