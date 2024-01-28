@@ -54,6 +54,35 @@ public class CourseMaterial {
         this.course = course;
     }
 
+    public static class Builder {
+        private CourseMaterial courseMaterial = new CourseMaterial();
+
+        private Builder() {
+
+        }
+
+        public Builder courseMaterialId(Long courseMaterialId) {
+            courseMaterial.courseMaterialId = courseMaterialId;
+            return this;
+        }
+
+        public Builder url(String url) {
+            courseMaterial.url = url;
+            return this;
+        }
+
+    
+        public Builder Course(Course course) {
+            courseMaterial.course = course;
+            return this;
+        }
+        // Add more builder methods for other fields...
+
+        public CourseMaterial build() {
+            // Validate if necessary and return the built User object
+            return courseMaterial;
+        }
+    }
 
 
     

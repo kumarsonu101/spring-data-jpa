@@ -19,7 +19,7 @@ public class Course {
 
     public Course() {
     }
-    
+
     public Course(Long courseId, String title, Integer credit) {
         this.courseId = courseId;
         this.title = title;
@@ -44,6 +44,34 @@ public class Course {
         this.credit = credit;
     } 
 
+     public static class Builder {
+        private Course course = new Course();
+
+        private Builder() {
+
+        }
+
+        public Builder courseId(Long courseId) {
+            course.courseId = courseId;
+            return this;
+        }
+
+        public Builder title(String title) {
+            course.title = title;
+            return this;
+        }
+
+        public Builder credit(Integer credit) {
+            course.credit = credit;
+            return this;
+        }
+
     
+        // Add more builder methods for other fields...
+
+        public Course build() {
+            // Validate if necessary and return the built User object
+            return course;
+        }
     
 }
