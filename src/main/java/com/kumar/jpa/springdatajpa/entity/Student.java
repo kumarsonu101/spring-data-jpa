@@ -1,6 +1,7 @@
 package com.kumar.jpa.springdatajpa.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,29 +22,25 @@ public class Student {
     private String lastName;
     @Column(nullable = false)
     private String email;
-    private String guardianName;
-    private String gurdianEmail;
-    private String guardianMobile;
+
+    @Embedded
+    Guardian guardian;
 
     public Student() {
 
     }
 
-    public Student(Long studentId, String firstName, String lastName, String email, String guardianName,
-            String gurdianEmail, String guardianMobile) {
+    public Student(Long studentId, String firstName, String lastName, String email) {
         this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.guardianName = guardianName;
-        this.gurdianEmail = gurdianEmail;
-        this.guardianMobile = guardianMobile;
     }
 
     public Long getStudentId() {
         return studentId;
     }
-    
+
 
     public void setStudentId(Long studentId) {
         this.studentId = studentId;
@@ -71,30 +68,6 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getGuardianName() {
-        return guardianName;
-    }
-
-    public void setGuardianName(String guardianName) {
-        this.guardianName = guardianName;
-    }
-
-    public String getGurdianEmail() {
-        return gurdianEmail;
-    }
-
-    public void setGurdianEmail(String gurdianEmail) {
-        this.gurdianEmail = gurdianEmail;
-    }
-
-    public String getGuardianMobile() {
-        return guardianMobile;
-    }
-
-    public void setGuardianMobile(String guardianMobile) {
-        this.guardianMobile = guardianMobile;
     }
 
     public static Builder builder() {
@@ -127,22 +100,10 @@ public class Student {
             student.email = email;
             return this;
         }
-
-        public Builder guardianName(String guardianName) {
-            student.guardianName = guardianName;
+        public Builder guardian(Guardian guardian) {
+            student.guardian = guardian;
             return this;
         }
-
-        public Builder gurdianEmail(String gurdianEmail) {
-            student.gurdianEmail = gurdianEmail;
-            return this;
-        }
-
-        public Builder guardianMobile(String guardianMobile) {
-            student.guardianMobile = guardianMobile;
-            return this;
-        }
-
         // Add more builder methods for other fields...
 
         public Student build() {
