@@ -2,13 +2,22 @@ package com.kumar.jpa.springdatajpa.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
 @Entity(name = "student")
+@Table(name = "tbl_student")
 public class Student {
     
     @Id
-    @GeneratedValue()
+    @SequenceGenerator(
+        name = "student_sequence",
+        sequenceName = "student_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "student_sequence")
     private Long studentId;
     private String firstName;
     private String lastName;
