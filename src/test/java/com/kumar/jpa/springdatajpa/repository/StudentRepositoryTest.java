@@ -90,6 +90,19 @@ public class StudentRepositoryTest {
 
     }
     
+    @Test
+    void should_return_first_name_given_email_address() {
+      Student student = studentRepository.getStudentFirstNameByEmailAdress("sonuKumar@gmail.com");
+      assertEquals(student.getFirstName(), "Sonu");
+
+    }
+
+    @Test
+    void should_return_first_name_given_email_address_param() {
+        Student student = studentRepository.getStudentFirstNameByEmailAdressWithParam("sonuKumar@gmail.com");
+      assertEquals(student.getFirstName(), "Sonu");
+
+    }
 
     private static void assertListSize(List<?> list, int expectedSize) {
         // Use assert to check the size of the list
