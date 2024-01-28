@@ -104,6 +104,13 @@ public class StudentRepositoryTest {
 
     }
 
+    @Test
+    void should_update_first_name_given_email_address() {
+       studentRepository.updateStudentByEmailId("Naveen","sonuKumar@gmail.com");
+    
+
+    }
+
     private static void assertListSize(List<?> list, int expectedSize) {
         // Use assert to check the size of the list
         assert list.size() == expectedSize : "List size does not match expected size";
