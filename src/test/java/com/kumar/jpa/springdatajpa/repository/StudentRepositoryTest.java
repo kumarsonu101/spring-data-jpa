@@ -107,8 +107,6 @@ public class StudentRepositoryTest {
     @Test
     void should_update_first_name_given_email_address() {
        studentRepository.updateStudentByEmailId("Naveen","sonuKumar@gmail.com");
-    
-
     }
 
     private static void assertListSize(List<?> list, int expectedSize) {
