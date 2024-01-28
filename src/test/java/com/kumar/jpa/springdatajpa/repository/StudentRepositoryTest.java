@@ -63,6 +63,23 @@ public class StudentRepositoryTest {
         assertListSize(studentListByName, 2);
         assertEquals(studentListByName.get(0).getFirstName(), "Sonu");
         assertEquals(studentListByName.get(0).getEmail(), "sonuKumar@gmail.com");
+      
+    }
+
+    @Test
+    void should_return_student_list_given_name() {
+        List<Student> studentListByName = studentRepository.findByFirstNameContaining("So");
+        assertListSize(studentListByName, 2);
+        assertEquals(studentListByName.get(0).getFirstName(), "Sonu");
+        assertEquals(studentListByName.get(0).getEmail(), "sonuKumar@gmail.com");
+      
+    }
+
+    @Test
+    void should_return_student_list_given_guardian_name() {
+        List<Student> studentListByName = studentRepository.findByGuardianName("XYZ");
+        assertListSize(studentListByName, 1);
+      
     }
     
 
