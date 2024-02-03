@@ -12,7 +12,6 @@ import jakarta.persistence.SequenceGenerator;
 import lombok.ToString;
 
 @Entity
-@ToString()
 public class CourseMaterial {
 
     @Id
@@ -22,7 +21,6 @@ public class CourseMaterial {
     private String url;
 
     @OneToOne(
-        cascade = CascadeType.ALL,
         fetch = FetchType.EAGER
     )
     @JoinColumn(name = "course_id", referencedColumnName = "courseId")

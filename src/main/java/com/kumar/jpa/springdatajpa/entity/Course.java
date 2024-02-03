@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
+import lombok.ToString;
 
 @Entity
 public class Course {
@@ -88,14 +89,6 @@ public class Course {
             return course;
         }
 
-    }
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseId=" + courseId +
-                ", title='" + title + '\'' +
-                ", credit=" + credit +
-                '}';
     }
 
     public CourseMaterial getCourseMaterial() {
