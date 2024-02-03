@@ -26,7 +26,7 @@ public class TeacherRepositoryTest {
         Teacher teacher = Teacher.builder()
                 .firstName("Leena")
                 .lastName("Kholi")
-                .course(addCourseDetails())
+              //  .course(addCourseDetails())
                 .build();
         if (null != teacher) {
             teacherRepository.save(teacher);

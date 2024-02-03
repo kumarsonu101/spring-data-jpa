@@ -29,9 +29,12 @@ public class Teacher {
     private String firstName;
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "teacher_id",referencedColumnName = "teacherId")
-    private List<Course> course;
+    /*
+     * Commented because as per JPA Always go for Many to one instead of one to many
+     */
+    // @OneToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "teacher_id",referencedColumnName = "teacherId")
+    // private List<Course> course;
 
 
 

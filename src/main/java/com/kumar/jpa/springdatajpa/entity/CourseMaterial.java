@@ -21,7 +21,8 @@ public class CourseMaterial {
     private String url;
 
     @OneToOne(
-        fetch = FetchType.EAGER
+        fetch = FetchType.EAGER,
+        optional = false
     )
     @JoinColumn(name = "course_id", referencedColumnName = "courseId")
     private Course course;
