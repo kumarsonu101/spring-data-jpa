@@ -7,7 +7,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import com.kumar.jpa.springdatajpa.entity.Course;
@@ -47,6 +50,33 @@ public class CourseRepositoryTest {
       .firstName("Priyanka")
       .lastName("Singh")
       .build();
+    }
+
+    @Test
+    void findAllPagination() {
+      org.springframework.data.domain.Pageable firstPageWithThreeRecord = PageRequest.of(0, 3);
+      org.springframework.data.domain.Pageable secondPageWithTwoRecord = PageRequest.of(1, 2);
+      
+      List<Course> courseWithPagination = courseRepository.findAll(firstPageWithThreeRecord).getContent();
+      int numberOfElements = courseRepository.findAll(firstPageWithThreeRecord).getNumberOfElements();
+
+    }
+
+    @Test
+    void findAllUsingSorting() {
+
+      org.springframework.data.domain.Pageable pageable = PageRequest.of(0, 2, 
+      Sort.by("title")
+      .descending()
+      .and(Sort.by("credit")));
+      List<Course> sortedCourse = courseRepository.findAll(pageable).getContent();
+
+    }
+
+    @Test
+    void findByTitle() {
+      org.springframework.data.domain.Pageable pageBasedOnTitle = PageRequest.of(0, 1);
+      courseRepository.findPageByTitle("DSA", pageBasedOnTitle).getContent();
     }
 
 }
