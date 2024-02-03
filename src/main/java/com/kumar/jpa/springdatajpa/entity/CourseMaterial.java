@@ -12,7 +12,7 @@ import jakarta.persistence.SequenceGenerator;
 import lombok.ToString;
 
 @Entity
-@ToString(exclude = "course")
+@ToString()
 public class CourseMaterial {
 
     @Id
@@ -23,7 +23,7 @@ public class CourseMaterial {
 
     @OneToOne(
         cascade = CascadeType.ALL,
-        fetch = FetchType.LAZY
+        fetch = FetchType.EAGER
     )
     @JoinColumn(name = "course_id", referencedColumnName = "courseId")
     private Course course;

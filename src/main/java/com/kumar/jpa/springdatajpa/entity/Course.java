@@ -1,9 +1,11 @@
 package com.kumar.jpa.springdatajpa.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -16,6 +18,9 @@ public class Course {
     private String title;
     private Integer credit;
 
+    @OneToOne(mappedBy = "course",  cascade = CascadeType.ALL)
+    private  CourseMaterial courseMaterial;
+
     public Course() {
     }
 
@@ -25,6 +30,7 @@ public class Course {
         this.credit = credit;
     }
 
+    
     public Long getCourseId() {
         return courseId;
     }
@@ -82,5 +88,21 @@ public class Course {
             return course;
         }
 
+    }
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseId=" + courseId +
+                ", title='" + title + '\'' +
+                ", credit=" + credit +
+                '}';
+    }
+
+    public CourseMaterial getCourseMaterial() {
+        return courseMaterial;
+    }
+
+    public void setCourseMaterial(CourseMaterial courseMaterial) {
+        this.courseMaterial = courseMaterial;
     }
 }

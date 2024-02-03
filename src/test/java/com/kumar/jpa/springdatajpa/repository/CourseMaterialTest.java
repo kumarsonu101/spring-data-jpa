@@ -32,6 +32,7 @@ public class CourseMaterialTest {
     @Test
     void fetchCourseMaterial() {
        List<CourseMaterial> courseMaterial =  courseMaterialRepository.findAll();
+       System.out.println("Course Material" + courseMaterial);
 
     }
 }
