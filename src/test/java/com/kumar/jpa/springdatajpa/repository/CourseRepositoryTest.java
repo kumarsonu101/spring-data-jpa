@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import com.kumar.jpa.springdatajpa.entity.Course;
+import com.kumar.jpa.springdatajpa.entity.Student;
 import com.kumar.jpa.springdatajpa.entity.Teacher;
 
 @SpringBootTest
@@ -79,4 +80,27 @@ public class CourseRepositoryTest {
       courseRepository.findPageByTitle("DSA", pageBasedOnTitle).getContent();
     }
 
+    @Test
+    void should_save_teacher_student_with_course() {
+      Course course = Course.builder().title("Kakfa").credit(8).teacher(createTeacher()).build();
+      Student student = createStudent();
+      course.addStudent(student);
+      courseRepository.save(course);
+
+    }
+
+    private Student createStudent() {
+     return Student.builder()
+                .firstName("Akash")
+                .lastName("goyal")
+                .email("akashgoyal@gmail.com")
+                .build();
+    }
+
+    private Teacher createTeacher() {
+      return Teacher.builder()
+      .firstName("Jyoti")
+      .lastName("Singh")
+      .build();
+    }
 }
