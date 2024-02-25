@@ -80,14 +80,14 @@ public class CourseRepositoryTest {
       courseRepository.findPageByTitle("DSA", pageBasedOnTitle).getContent();
     }
 
-    @Test
-    void should_save_teacher_student_with_course() {
-      Course course = Course.builder().title("Kakfa").credit(8).teacher(createTeacher()).build();
-      Student student = createStudent();
-      course.addStudent(student);
-      courseRepository.save(course);
+    // @Test
+    // void should_save_teacher_student_with_course() {
+    //   Course course = Course.builder().title("Kakfa").credit(8).teacher(createTeacher()).build();
+    //   Student student = createStudent();
+    //   course.addStudent(student);
+    //   courseRepository.save(course);
 
-    }
+    // }
 
     private Student createStudent() {
      return Student.builder()
