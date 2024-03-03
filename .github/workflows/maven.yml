@@ -1,5 +1,5 @@
 
-name: Validate project
+name: Validate push
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
     branches: [ "master"]
 
 jobs:
-  build:
+  validate_and_deploy:
     runs-on: ubuntu-latest
 
     services:
