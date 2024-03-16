@@ -27,7 +27,6 @@ public class CourseRepositoryTest {
     @Test
     void should_return_course_with_course_material() {
       List<Course> course =  courseRepository.findAll();
-      System.out.println("Here is what is fetched" + course);
       assertEquals(course.get(0).getTitle(), "DSA");
     }
     
