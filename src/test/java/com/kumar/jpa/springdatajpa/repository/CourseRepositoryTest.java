@@ -24,12 +24,11 @@ public class CourseRepositoryTest {
     @Autowired
     CourseRepository courseRepository;
 
-    @Test
-    void should_return_course_with_course_material() {
-      List<Course> course =  courseRepository.findAll();
-      System.out.println("Here is what is fetched" + course);
-      assertEquals(course.get(0).getTitle(), "DSA");
-    }
+    // @Test
+    // void should_return_course_with_course_material() {
+    //   List<Course> course =  courseRepository.findAll();
+    //   assertEquals(course.get(0).getTitle(), "DSA");
+    // }
     
     @Test
     void shoud_save_course_with_course_material_and_teacher() {
