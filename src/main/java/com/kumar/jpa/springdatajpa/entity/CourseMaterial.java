@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import lombok.ToString;
@@ -25,6 +26,7 @@ public class CourseMaterial {
         optional = false
     )
     @JoinColumn(name = "course_id", referencedColumnName = "courseId")
+     @ManyToOne(cascade = CascadeType.PERSIST)
     private Course course;
 
     public CourseMaterial() {
